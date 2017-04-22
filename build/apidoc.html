@@ -1,0 +1,3215 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/LeanMeanFightingMachine/dploy"
+
+    >dploy (v1.2.0)</a>
+</h1>
+<h4>Command line tool to deploy websites using FTP/SFTP and git.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy">module dploy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.dploy">
+            function <span class="apidocSignatureSpan"></span>dploy
+            <span class="apidocSignatureSpan">(config, completed)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy">
+            function <span class="apidocSignatureSpan">dploy.</span>deploy
+            <span class="apidocSignatureSpan">(config, server, ignoreInclude, catchup)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp">
+            function <span class="apidocSignatureSpan">dploy.</span>ftp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.generator">
+            function <span class="apidocSignatureSpan">dploy.</span>generator
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp">
+            function <span class="apidocSignatureSpan">dploy.</span>sftp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.</span>deploy.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.</span>ftp.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.</span>generator.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.</span>sftp.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.deploy">module dploy.deploy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.deploy">
+            function <span class="apidocSignatureSpan">dploy.</span>deploy
+            <span class="apidocSignatureSpan">(config, server, ignoreInclude, catchup)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.deploy.prototype">module dploy.deploy.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype._normalize">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_normalize
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype._removeSpecialChars">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_removeSpecialChars
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype._resolveHomeFolder">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_resolveHomeFolder
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.addAll">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>addAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.askBeforeUpload">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>askBeforeUpload
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.canDelete">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>canDelete
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.canUpload">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>canUpload
+            <span class="apidocSignatureSpan">(name)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.checkBeforeUpload">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkBeforeUpload
+            <span class="apidocSignatureSpan">(connection, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.checkBranch">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkBranch
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.checkDiff">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkDiff
+            <span class="apidocSignatureSpan">(old_rev, new_rev)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.checkPassword">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkPassword
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.checkRevision">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkRevision
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.complete">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>complete
+            <span class="apidocSignatureSpan">(displayMessage)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.configLoaded">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>configLoaded
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.deleteItem">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>deleteItem
+            <span class="apidocSignatureSpan">(connection, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.dispose">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.hasFilesToUpload">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>hasFilesToUpload
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.includeExtraFiles">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>includeExtraFiles
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.loadYAML">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>loadYAML
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.nextOnQueue">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>nextOnQueue
+            <span class="apidocSignatureSpan">(connection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.removeConnections">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>removeConnections
+            <span class="apidocSignatureSpan">(displayMessage)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.setFolderAsCreated">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setFolderAsCreated
+            <span class="apidocSignatureSpan">(folder)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.setupFallbackConfig">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupFallbackConfig
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.setupGit">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupGit
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.setupMultipleServers">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupMultipleServers
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.setupServer">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupServer
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.startUploads">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>startUploads
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.deploy.prototype.uploadItem">
+            function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>uploadItem
+            <span class="apidocSignatureSpan">(connection, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>completed</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>connection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>connections</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>dirCreated</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>ignoreInclude</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>isConnected</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>local_hash</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>numConnections</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>remote_hash</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>revisionPath</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>server</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>toDelete</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>toUpload</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.ftp">module dploy.ftp</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.ftp">
+            function <span class="apidocSignatureSpan">dploy.</span>ftp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.ftp.prototype">module dploy.ftp.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.close">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>close
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.connect">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>connect
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.delete">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>delete
+            <span class="apidocSignatureSpan">(remote_path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.dispose">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.get">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>get
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.mkdir">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>mkdir
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.ftp.prototype.upload">
+            function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>upload
+            <span class="apidocSignatureSpan">(local_path, remote_path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>closed</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>connected</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>connection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>failed</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.generator">module dploy.generator</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.generator.generator">
+            function <span class="apidocSignatureSpan">dploy.</span>generator
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.generator.prototype">module dploy.generator.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.generator.prototype._completed">
+            function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_completed
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.generator.prototype._generateConfig">
+            function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_generateConfig
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.generator.prototype._generatePostCommit">
+            function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_generatePostCommit
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.sftp">module dploy.sftp</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.sftp">
+            function <span class="apidocSignatureSpan">dploy.</span>sftp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.dploy.sftp.prototype">module dploy.sftp.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype._rdelete">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>_rdelete
+            <span class="apidocSignatureSpan">(paths, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype._rmkdir">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>_rmkdir
+            <span class="apidocSignatureSpan">(paths, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.close">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>close
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.connect">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>connect
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.delete">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>delete
+            <span class="apidocSignatureSpan">(remote_path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.dispose">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>dispose
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.get">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>get
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.mkdir">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>mkdir
+            <span class="apidocSignatureSpan">(path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.dploy.sftp.prototype.upload">
+            function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>upload
+            <span class="apidocSignatureSpan">(local_path, remote_path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>closed</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>closing</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>connected</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>connection</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>failed</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>sftp</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy" id="apidoc.module.dploy">module dploy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.dploy" id="apidoc.element.dploy.dploy">
+        function <span class="apidocSignatureSpan"></span>dploy
+        <span class="apidocSignatureSpan">(config, completed)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DPLOY(config, completed) {
+  this.config = config;
+  this.completed = completed;
+  this.deploy = __bind(this.deploy, this);
+  if (this.config) {
+    this.servers = [null];
+    return this.deploy();
+  } else if (process.argv.indexOf(&#x22;install&#x22;) &#x3e;= 0) {
+    return new Generator();
+  } else if (process.argv.indexOf(&#x22;--help&#x22;) &#x3e;= 0 || process.argv.indexOf(&#x22;-h&#x22;) &#x3e;= 0) {
+    return new Help();
+  } else if (process.argv.indexOf(&#x22;--version&#x22;) &#x3e;= 0 || process.argv.indexOf(&#x22;-v&#x22;) &#x3e;= 0) {
+    return new Version();
+  } else {
+    this.servers = process.argv.splice(2, process.argv.length);
+    this.ignoreInclude = this.servers.indexOf(&#x22;-i&#x22;) &#x3e;= 0 || this.servers.indexOf(&#x22;--ignore-include&#x22;) &#x3e;= 0;
+    this.catchup = this.servers.indexOf(&#x22;-c&#x22;) &#x3e;= 0 || this.servers.indexOf(&#x22;--catchup&#x22;) &#x3e;= 0;
+    this.servers = this._filterFlags(this.servers, [&#x22;-i&#x22;, &#x22;--ignore-include&#x22;, &#x22;-c&#x22;, &#x22;--catchup&#x22;]);
+    if (this.servers.length === 0) {
+      this.servers.push(null);
+    }
+    this.deploy();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy" id="apidoc.element.dploy.deploy">
+        function <span class="apidocSignatureSpan">dploy.</span>deploy
+        <span class="apidocSignatureSpan">(config, server, ignoreInclude, catchup)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Deploy(config, server, ignoreInclude, catchup) {
+  this.config = config;
+  this.server = server;
+  this.ignoreInclude = ignoreInclude != null ? ignoreInclude : false;
+  this.catchup = catchup != null ? catchup : false;
+  this.complete = __bind(this.complete, this);
+  this.dispose = __bind(this.dispose, this);
+  this.removeConnections = __bind(this.removeConnections, this);
+  this.setFolderAsCreated = __bind(this.setFolderAsCreated, this);
+  this.deleteItem = __bind(this.deleteItem, this);
+  this.uploadItem = __bind(this.uploadItem, this);
+  this.checkBeforeUpload = __bind(this.checkBeforeUpload, this);
+  this.canDelete = __bind(this.canDelete, this);
+  this.canUpload = __bind(this.canUpload, this);
+  this.completed = new Signal();
+  this.connections = [];
+  this.numConnections = 0;
+  this.toUpload = [];
+  this.toDelete = [];
+  this.dirCreated = {};
+  this.isConnected = false;
+  prompt.message = &#x22;– &#x22;.red;
+  prompt.delimiter = &#x22;&#x22;;
+  if (this.config != null) {
+    this.configLoaded();
+  } else {
+    this.loadYAML();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp" id="apidoc.element.dploy.ftp">
+        function <span class="apidocSignatureSpan">dploy.</span>ftp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FTP() {
+  var _this = this;
+  this.connected = new Signal();
+  this.failed = new Signal();
+  this.closed = new Signal();
+  this.connection = new ftp();
+  this.connection.on(&#x22;error&#x22;, function() {
+    return _this.failed.dispatch();
+  });
+  this.connection.on(&#x22;ready&#x22;, function() {
+    return _this.connected.dispatch();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.generator" id="apidoc.element.dploy.generator">
+        function <span class="apidocSignatureSpan">dploy.</span>generator
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Generator() {
+  this._generatePostCommit = __bind(this._generatePostCommit, this);
+  this._generateConfig = __bind(this._generateConfig, this);
+  this._dployCompleted = new Signal();
+  this._dployCompleted.add(this._generatePostCommit);
+  this._postCommitCompleted = new Signal();
+  this._postCommitCompleted.add(this._completed);
+  console.log(&#x22;Installing &#x22;.yellow + &#x22;DPLOY&#x22;.bold.yellow + &#x22;...&#x22;.yellow);
+  this._generateConfig();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp" id="apidoc.element.dploy.sftp">
+        function <span class="apidocSignatureSpan">dploy.</span>sftp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SFTP() {
+  var _this = this;
+  this.connected = new Signal();
+  this.failed = new Signal();
+  this.closed = new Signal();
+  this.closing = false;
+  this.sftp = new ssh2();
+  this.sftp.on(&#x22;error&#x22;, function() {
+    if (!_this.closing) {
+      return _this.failed.dispatch();
+    }
+  });
+  this.sftp.on(&#x22;close&#x22;, function(hadError) {
+    if (_this.hadError) {
+      if (!_this.closing) {
+        return _this.failed.dispatch();
+      }
+    }
+  });
+  this.sftp.on(&#x22;ready&#x22;, function() {
+    return _this.sftp.sftp(function(error, connection) {
+      if (error) {
+        return _this.failed.dispatch();
+      }
+      _this.connection = connection;
+      return _this.connected.dispatch();
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (_this.hadError) {
+    if (!_this.closing) {
+      return _this.failed.dispatch();
+    }
+  }
+});
+this.sftp.on(&#x22;ready&#x22;, function() {
+  return _this.sftp.<span class="apidocCodeKeywordSpan">sftp</span>(function(error, connection) {
+    if (error) {
+      return _this.failed.dispatch();
+    }
+    _this.connection = connection;
+    return _this.connected.dispatch();
+  });
+});
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.deploy" id="apidoc.module.dploy.deploy">module dploy.deploy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.deploy" id="apidoc.element.dploy.deploy.deploy">
+        function <span class="apidocSignatureSpan">dploy.</span>deploy
+        <span class="apidocSignatureSpan">(config, server, ignoreInclude, catchup)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Deploy(config, server, ignoreInclude, catchup) {
+  this.config = config;
+  this.server = server;
+  this.ignoreInclude = ignoreInclude != null ? ignoreInclude : false;
+  this.catchup = catchup != null ? catchup : false;
+  this.complete = __bind(this.complete, this);
+  this.dispose = __bind(this.dispose, this);
+  this.removeConnections = __bind(this.removeConnections, this);
+  this.setFolderAsCreated = __bind(this.setFolderAsCreated, this);
+  this.deleteItem = __bind(this.deleteItem, this);
+  this.uploadItem = __bind(this.uploadItem, this);
+  this.checkBeforeUpload = __bind(this.checkBeforeUpload, this);
+  this.canDelete = __bind(this.canDelete, this);
+  this.canUpload = __bind(this.canUpload, this);
+  this.completed = new Signal();
+  this.connections = [];
+  this.numConnections = 0;
+  this.toUpload = [];
+  this.toDelete = [];
+  this.dirCreated = {};
+  this.isConnected = false;
+  prompt.message = &#x22;– &#x22;.red;
+  prompt.delimiter = &#x22;&#x22;;
+  if (this.config != null) {
+    this.configLoaded();
+  } else {
+    this.loadYAML();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.deploy.prototype" id="apidoc.module.dploy.deploy.prototype">module dploy.deploy.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype._normalize" id="apidoc.element.dploy.deploy.prototype._normalize">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_normalize
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_normalize = function (str) {
+  return path.normalize(str).replace(/\\+/g, &#x22;/&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*/
+
+
+Deploy.prototype.checkRevision = function() {
+  var remotePath,
+    _this = this;
+  console.log(&#x22;Checking revisions...&#x22;.bold.yellow);
+  remotePath = this.<span class="apidocCodeKeywordSpan">_normalize</span>(this.config.path.remote + this.config.revision);
+  return this.connection.get(remotePath, function(error, data) {
+    if (error) {
+      fs.writeFile(_this.revisionPath, _this.local_hash, function(error) {
+        if (error) {
+          return console.log(&#x22;Error creating revision file at:&#x22;.red, (&#x22;&#x22; + _this.revisionPath).red.bold.underline
+, error);
+        }
+        return _this.addAll();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype._removeSpecialChars" id="apidoc.element.dploy.deploy.prototype._removeSpecialChars">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_removeSpecialChars
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_removeSpecialChars = function (str) {
+  return str.replace(/[\W]/g, &#x22;&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+    return _this.addAll();
+  });
+  return;
+}
+fs.writeFileSync(_this.revisionPath, _this.local_hash);
+if (typeof data === &#x22;string&#x22;) {
+  _this.remote_hash = _this.<span class="apidocCodeKeywordSpan">_removeSpecialChars</span>(data);
+  return _this.checkDiff(_this.remote_hash, _this.local_hash);
+} else {
+  return data.on(&#x22;data&#x22;, function(e) {
+    data.end();
+    _this.remote_hash = _this._removeSpecialChars(e.toString());
+    return _this.checkDiff(_this.remote_hash, _this.local_hash);
+  });
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype._resolveHomeFolder" id="apidoc.element.dploy.deploy.prototype._resolveHomeFolder">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>_resolveHomeFolder
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_resolveHomeFolder = function (str) {
+  var homeFolder;
+  homeFolder = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+  if (str.substr(0, 1) === &#x22;~&#x22;) {
+    return path.resolve(path.join(homeFolder, str.substr(1)));
+  }
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    Deploy.prototype.checkPassword = function(callback) {
+var _this = this;
+if (this.config.pass) {
+  return callback.call(this);
+}
+if (this.config.privateKey || this.config.publicKey &#x26;&#x26; this.config.scheme === &#x22;sftp&#x22;) {
+  if (this.config.privateKey) {
+    this.config.privateKey = fs.readFileSync(this.<span class="apidocCodeKeywordSpan">_resolveHomeFolder</span>(this.config.privateKey
+));
+  }
+  if (this.config.publicKey) {
+    this.config.publicKey = fs.readFileSync(this._resolveHomeFolder(this.config.publicKey));
+  }
+  return callback.call(this);
+}
+prompt.get([
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.addAll" id="apidoc.element.dploy.deploy.prototype.addAll">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>addAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addAll = function () {
+  var _this = this;
+  console.log(&#x22;Uploading files...&#x22;.bold.yellow);
+  return exec(&#x22;git ls-tree -r --name-only HEAD&#x22;, {
+    maxBuffer: 5000 * 1024
+  }, function(error, stdout, stderr) {
+    var detail, files, remoteName, _i, _len;
+    if (error) {
+      return console.log(&#x22;An error occurred when retrieving &#x27;git ls-tree -r --name-only HEAD&#x27;&#x22;.bold.red, error);
+    }
+    if (!_this.catchup) {
+      files = stdout.split(&#x22;\n&#x22;);
+      for (_i = 0, _len = files.length; _i &#x3c; _len; _i++) {
+        detail = files[_i];
+        remoteName = _this.config.path.local ? detail.split(_this.config.path.local).join(&#x22;&#x22;) : detail;
+        if (_this.canUpload(detail)) {
+          _this.toUpload.push({
+            name: detail,
+            remote: remoteName
+          });
+        }
+      }
+      _this.includeExtraFiles();
+    }
+    _this.toUpload.push({
+      name: _this.revisionPath,
+      remote: _this.config.revision
+    });
+    if (_this.config.check) {
+      _this.askBeforeUpload();
+    } else {
+      _this.startUploads();
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+remotePath = this._normalize(this.config.path.remote + this.config.revision);
+return this.connection.get(remotePath, function(error, data) {
+  if (error) {
+    fs.writeFile(_this.revisionPath, _this.local_hash, function(error) {
+      if (error) {
+        return console.log(&#x22;Error creating revision file at:&#x22;.red, (&#x22;&#x22; + _this.revisionPath).red.bold.underline
+, error);
+      }
+      return _this.<span class="apidocCodeKeywordSpan">addAll</span>();
+    });
+    return;
+  }
+  fs.writeFileSync(_this.revisionPath, _this.local_hash);
+  if (typeof data === &#x22;string&#x22;) {
+    _this.remote_hash = _this._removeSpecialChars(data);
+    return _this.checkDiff(_this.remote_hash, _this.local_hash);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.askBeforeUpload" id="apidoc.element.dploy.deploy.prototype.askBeforeUpload">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>askBeforeUpload
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">askBeforeUpload = function () {
+  var file, remoteFile, _i, _j, _len, _len1, _ref, _ref1,
+    _this = this;
+  if (!this.hasFilesToUpload()) {
+    return;
+  }
+  if (this.toDelete.length) {
+    console.log(&#x22;Files that will be deleted:&#x22;.bold.red);
+    _ref = this.toDelete;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      file = _ref[_i];
+      console.log(&#x22;[ ? ]&#x22;.grey, (&#x22;&#x22; + file.remote).red);
+    }
+  }
+  if (this.toUpload.length) {
+    console.log(&#x22;Files that will be uploaded:&#x22;.bold.blue);
+    _ref1 = this.toUpload;
+    for (_j = 0, _len1 = _ref1.length; _j &#x3c; _len1; _j++) {
+      file = _ref1[_j];
+      remoteFile = this._normalize(this.config.path.remote + file.remote);
+      console.log(&#x22;[ ? ]&#x22;.blue, (&#x22;&#x22; + file.name).blue, &#x22;&#x3e;&#x22;.green, (&#x22;&#x22; + remoteFile).blue);
+    }
+  }
+  prompt.start();
+  return prompt.get([
+    {
+      name: &#x22;answer&#x22;,
+      pattern: /y|n|Y|N/,
+      description: &#x22;Are you sure you want to upload those files?&#x22;.bold.red + &#x22; (Y/n)&#x22;,
+      message: &#x22;The answer should be YES (y) or NO (n).&#x22;
+    }
+  ], function(error, result) {
+    if (result.answer.toLowerCase() === &#x22;y&#x22; || result.answer.toLowerCase() === &#x22;&#x22;) {
+      return _this.startUploads();
+    } else {
+      console.log(&#x22;Upload aborted by the user.&#x22;.red);
+      return _this.removeConnections(false);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return this.addAll();
+}
+console.log(&#x22;Checking diffs between&#x22;.bold.yellow, (&#x22;[&#x22; + old_rev + &#x22;]&#x22;).yellow, &#x22;&#x3e;&#x22;.
+yellow, (&#x22;[&#x22; + new_rev + &#x22;]&#x22;).yellow);
+if (old_rev === new_rev) {
+  if (this.config.include) {
+    this.includeExtraFiles();
+    if (this.config.check) {
+      this.<span class="apidocCodeKeywordSpan">askBeforeUpload</span>();
+    } else {
+      this.startUploads();
+    }
+    return;
+  } else {
+    console.log(&#x22;No diffs between local and remote :)&#x22;.blue);
+    return this.removeConnections();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.canDelete" id="apidoc.element.dploy.deploy.prototype.canDelete">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>canDelete
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canDelete = function (name) {
+  if (name.length &#x3c;= 0) {
+    return false;
+  }
+  if (this.config.path.local) {
+    if (name.indexOf(this.config.path.local) === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+files = stdout.split(&#x22;\n&#x22;);
+for (_i = 0, _len = files.length; _i &#x3c; _len; _i++) {
+  detail = files[_i];
+  data = detail.split(&#x22;\t&#x22;);
+  if (data.length &#x3e; 1) {
+    remoteName = _this.config.path.local ? data[1].split(_this.config.path.local).join(&#x22;&#x22;) : data[1];
+    if (data[0] === &#x22;D&#x22;) {
+      if (_this.<span class="apidocCodeKeywordSpan">canDelete</span>(data[1])) {
+        _this.toDelete.push({
+          name: data[1],
+          remote: remoteName
+        });
+      }
+    } else {
+      if (_this.canUpload(data[1])) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.canUpload" id="apidoc.element.dploy.deploy.prototype.canUpload">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>canUpload
+        <span class="apidocSignatureSpan">(name)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">canUpload = function (name) {
+  var exclude, _i, _len, _ref;
+  if (name.length &#x3c;= 0) {
+    return false;
+  }
+  if (this.config.path.local) {
+    if (name.indexOf(this.config.path.local) &#x3c; 0) {
+      return false;
+    }
+  }
+  _ref = this.config.exclude;
+  for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+    exclude = _ref[_i];
+    if (minimatch(name, exclude, {
+      dot: true
+    })) {
+      return false;
+    }
+  }
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    if (_this.canDelete(data[1])) {
+      _this.toDelete.push({
+        name: data[1],
+        remote: remoteName
+      });
+    }
+  } else {
+    if (_this.<span class="apidocCodeKeywordSpan">canUpload</span>(data[1])) {
+      _this.toUpload.push({
+        name: data[1],
+        remote: remoteName
+      });
+    }
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.checkBeforeUpload" id="apidoc.element.dploy.deploy.prototype.checkBeforeUpload">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkBeforeUpload
+        <span class="apidocSignatureSpan">(connection, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkBeforeUpload = function (connection, item) {
+  var folder, nameSplit,
+    _this = this;
+  item.started = true;
+  nameSplit = item.remote.split(&#x22;/&#x22;);
+  if (nameSplit.length &#x3e; 1) {
+    nameSplit.length = nameSplit.length - 1;
+    folder = nameSplit.join(&#x22;/&#x22;);
+    if (this.dirCreated[folder]) {
+      this.uploadItem(connection, item);
+      return;
+    }
+    return connection.mkdir(this._normalize(this.config.path.remote + folder), function(error) {
+      if (!_this.dirCreated[folder]) {
+        if (error) {
+
+        } else {
+          _this.setFolderAsCreated(folder);
+        }
+      }
+      if (error) {
+        item.started = false;
+        return _this.nextOnQueue(connection);
+      } else {
+        return _this.uploadItem(connection, item);
+      }
+    });
+  } else {
+    return this.uploadItem(connection, item);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+}
+if (this.toUpload.length) {
+  _ref1 = this.toUpload;
+  for (_j = 0, _len1 = _ref1.length; _j &#x3c; _len1; _j++) {
+    item = _ref1[_j];
+    if (!item.started) {
+      this.<span class="apidocCodeKeywordSpan">checkBeforeUpload</span>(connection, item);
+      return;
+    }
+  }
+}
+_ref2 = this.toDelete;
+for (_k = 0, _len2 = _ref2.length; _k &#x3c; _len2; _k++) {
+  item = _ref2[_k];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.checkBranch" id="apidoc.element.dploy.deploy.prototype.checkBranch">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkBranch
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkBranch = function () {
+  var _this = this;
+  if (!this.config.branch) {
+    return this.setupGit();
+  }
+  if (typeof this.config.branch === &#x22;string&#x22;) {
+    this.config.branch = [this.config.branch];
+  }
+  return exec(&#x22;git rev-parse --abbrev-ref HEAD&#x22;, function(error, stdout, stderr) {
+    var branch, currentBranch, _i, _len, _ref;
+    if (error) {
+      return console.log(&#x22;An error occurred when retrieving the current branch.&#x22;.bold.red, error);
+    }
+    currentBranch = stdout.replace(/\s/g, &#x22;&#x22;);
+    _ref = _this.config.branch;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      branch = _ref[_i];
+      if (currentBranch === branch) {
+        return _this.setupGit();
+      }
+    }
+    console.log(&#x22;Error: &#x22;.red.bold + &#x22;You are not allowed to deploy from &#x22;.red + (&#x22;&#x22; + currentBranch).bold.underline.red + &#x22; to &#x22;.
+red + (&#x22;&#x22; + _this.server).bold.underline.red);
+    return _this.removeConnections(false);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.checkDiff" id="apidoc.element.dploy.deploy.prototype.checkDiff">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkDiff
+        <span class="apidocSignatureSpan">(old_rev, new_rev)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkDiff = function (old_rev, new_rev) {
+  var _this = this;
+  if (!/([^\s])/.test(old_rev) || !/([^\s])/.test(new_rev)) {
+    return this.addAll();
+  }
+  console.log(&#x22;Checking diffs between&#x22;.bold.yellow, (&#x22;[&#x22; + old_rev + &#x22;]&#x22;).yellow, &#x22;&#x3e;&#x22;.yellow, (&#x22;[&#x22; + new_rev + &#x22;]&#x22;).yellow);
+  if (old_rev === new_rev) {
+    if (this.config.include) {
+      this.includeExtraFiles();
+      if (this.config.check) {
+        this.askBeforeUpload();
+      } else {
+        this.startUploads();
+      }
+      return;
+    } else {
+      console.log(&#x22;No diffs between local and remote :)&#x22;.blue);
+      return this.removeConnections();
+    }
+  }
+  return exec(&#x22;git diff --name-status &#x22; + old_rev + &#x22; &#x22; + new_rev, {
+    maxBuffer: 5000 * 1024
+  }, function(error, stdout, stderr) {
+    var data, detail, files, remoteName, _i, _len;
+    if (error) {
+      return console.log((&#x22;An error occurred when retrieving the &#x27;git diff --name-status &#x22; + old_rev + &#x22; &#x22; + new_rev + &#x22;&#x27;&#x22;).bold
+.red, error);
+    }
+    if (!_this.catchup) {
+      files = stdout.split(&#x22;\n&#x22;);
+      for (_i = 0, _len = files.length; _i &#x3c; _len; _i++) {
+        detail = files[_i];
+        data = detail.split(&#x22;\t&#x22;);
+        if (data.length &#x3e; 1) {
+          remoteName = _this.config.path.local ? data[1].split(_this.config.path.local).join(&#x22;&#x22;) : data[1];
+          if (data[0] === &#x22;D&#x22;) {
+            if (_this.canDelete(data[1])) {
+              _this.toDelete.push({
+                name: data[1],
+                remote: remoteName
+              });
+            }
+          } else {
+            if (_this.canUpload(data[1])) {
+              _this.toUpload.push({
+                name: data[1],
+                remote: remoteName
+              });
+            }
+          }
+        }
+      }
+      _this.includeExtraFiles();
+    }
+    _this.toUpload.push({
+      name: _this.revisionPath,
+      remote: _this.config.revision
+    });
+    if (_this.config.check) {
+      _this.askBeforeUpload();
+    } else {
+      _this.startUploads();
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return _this.addAll();
+  });
+  return;
+}
+fs.writeFileSync(_this.revisionPath, _this.local_hash);
+if (typeof data === &#x22;string&#x22;) {
+  _this.remote_hash = _this._removeSpecialChars(data);
+  return _this.<span class="apidocCodeKeywordSpan">checkDiff</span>(_this.remote_hash, _this.local_hash);
+} else {
+  return data.on(&#x22;data&#x22;, function(e) {
+    data.end();
+    _this.remote_hash = _this._removeSpecialChars(e.toString());
+    return _this.checkDiff(_this.remote_hash, _this.local_hash);
+  });
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.checkPassword" id="apidoc.element.dploy.deploy.prototype.checkPassword">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkPassword
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkPassword = function (callback) {
+  var _this = this;
+  if (this.config.pass) {
+    return callback.call(this);
+  }
+  if (this.config.privateKey || this.config.publicKey &#x26;&#x26; this.config.scheme === &#x22;sftp&#x22;) {
+    if (this.config.privateKey) {
+      this.config.privateKey = fs.readFileSync(this._resolveHomeFolder(this.config.privateKey));
+    }
+    if (this.config.publicKey) {
+      this.config.publicKey = fs.readFileSync(this._resolveHomeFolder(this.config.publicKey));
+    }
+    return callback.call(this);
+  }
+  prompt.get([
+    {
+      name: &#x22;password&#x22;,
+      description: &#x22;Enter the password for &#x22;.red + (&#x22;&#x22; + this.config.host + &#x22;:&#x22;).underline.bold.red,
+      required: true,
+      hidden: true
+    }
+  ], function(error, result) {
+    _this.config.pass = result.password;
+    return callback.call(_this);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/*
+	Method for when the config file is loaded
+*/
+
+
+Deploy.prototype.configLoaded = function() {
+  this.setupFallbackConfig();
+  return this.<span class="apidocCodeKeywordSpan">checkPassword</span>(this.checkBranch);
+};
+
+/*
+	Set the fallback configuration
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.checkRevision" id="apidoc.element.dploy.deploy.prototype.checkRevision">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>checkRevision
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkRevision = function () {
+  var remotePath,
+    _this = this;
+  console.log(&#x22;Checking revisions...&#x22;.bold.yellow);
+  remotePath = this._normalize(this.config.path.remote + this.config.revision);
+  return this.connection.get(remotePath, function(error, data) {
+    if (error) {
+      fs.writeFile(_this.revisionPath, _this.local_hash, function(error) {
+        if (error) {
+          return console.log(&#x22;Error creating revision file at:&#x22;.red, (&#x22;&#x22; + _this.revisionPath).red.bold.underline, error);
+        }
+        return _this.addAll();
+      });
+      return;
+    }
+    fs.writeFileSync(_this.revisionPath, _this.local_hash);
+    if (typeof data === &#x22;string&#x22;) {
+      _this.remote_hash = _this._removeSpecialChars(data);
+      return _this.checkDiff(_this.remote_hash, _this.local_hash);
+    } else {
+      return data.on(&#x22;data&#x22;, function(e) {
+        data.end();
+        _this.remote_hash = _this._removeSpecialChars(e.toString());
+        return _this.checkDiff(_this.remote_hash, _this.local_hash);
+      });
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      return console.log(&#x22;Connection failed.&#x22;.bold.red);
+    }
+  });
+  this.connection.connected.add(function() {
+    _this.isConnected = true;
+    _this.numConnections++;
+    _this.connections.push(_this.connection);
+    return _this.<span class="apidocCodeKeywordSpan">checkRevision</span>();
+  });
+  return this.connection.connect(this.config);
+};
+
+/*
+	Create more connections of your server for multiple uploads
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.complete" id="apidoc.element.dploy.deploy.prototype.complete">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>complete
+        <span class="apidocSignatureSpan">(displayMessage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">complete = function (displayMessage) {
+  var _this = this;
+  return fs.unlink(this.revisionPath, function(err) {
+    if (displayMessage) {
+      console.log(&#x22;Upload completed for &#x22;.green + (&#x22;&#x22; + _this.server).bold.underline.green);
+    }
+    return _this.completed.dispatch();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  _ref = this.connections;
+  _results = [];
+  for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+    con = _ref[_i];
+    con.closed.add(function() {
+      _this.numConnections--;
+      if (_this.numConnections === 0) {
+        return _this.<span class="apidocCodeKeywordSpan">complete</span>(displayMessage);
+      }
+    });
+    _results.push(con.close());
+  }
+  return _results;
+} else {
+  return this.complete(displayMessage);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.configLoaded" id="apidoc.element.dploy.deploy.prototype.configLoaded">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>configLoaded
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">configLoaded = function () {
+  this.setupFallbackConfig();
+  return this.checkPassword(this.checkBranch);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.toUpload = [];
+  this.toDelete = [];
+  this.dirCreated = {};
+  this.isConnected = false;
+  prompt.message = &#x22;– &#x22;.red;
+  prompt.delimiter = &#x22;&#x22;;
+  if (this.config != null) {
+    this.<span class="apidocCodeKeywordSpan">configLoaded</span>();
+  } else {
+    this.loadYAML();
+  }
+}
+
+/*
+	Load the dploy.yaml, parse and find the current server
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.deleteItem" id="apidoc.element.dploy.deploy.prototype.deleteItem">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>deleteItem
+        <span class="apidocSignatureSpan">(connection, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deleteItem = function (connection, item) {
+  var remote_path,
+    _this = this;
+  item.started = true;
+  remote_path = this._normalize(this.config.path.remote + item.remote);
+  return connection[&#x22;delete&#x22;](remote_path, function(error) {
+    if (error) {
+      console.log(&#x22;[ × ]&#x22;.grey, (&#x22;Fail deleting file &#x22; + remote_path + &#x22;:&#x22;).red);
+    } else {
+      console.log(&#x22;[ × ]&#x22;.grey, (&#x22;File deleted: &#x22; + remote_path + &#x22;:&#x22;).grey);
+    }
+    item.completed = true;
+    return _this.nextOnQueue(connection);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    Deploy.prototype.nextOnQueue = function(connection) {
+var item, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+if (this.toDelete.length) {
+  _ref = this.toDelete;
+  for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+    item = _ref[_i];
+    if (!item.started) {
+      this.<span class="apidocCodeKeywordSpan">deleteItem</span>(connection, item);
+      return;
+    }
+  }
+}
+if (this.toUpload.length) {
+  _ref1 = this.toUpload;
+  for (_j = 0, _len1 = _ref1.length; _j &#x3c; _len1; _j++) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.dispose" id="apidoc.element.dploy.deploy.prototype.dispose">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispose = function () {
+  var con, _i, _len, _ref;
+  if (this.completed) {
+    _ref = this.connections;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      con = _ref[_i];
+      con.dispose();
+    }
+    this.completed.dispose();
+    return this.completed = null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Deploy.prototype.dispose = function() {
+  var con, _i, _len, _ref;
+  if (this.completed) {
+    _ref = this.connections;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      con = _ref[_i];
+      con.<span class="apidocCodeKeywordSpan">dispose</span>();
+    }
+    this.completed.dispose();
+    return this.completed = null;
+  }
+};
+
+/*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.hasFilesToUpload" id="apidoc.element.dploy.deploy.prototype.hasFilesToUpload">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>hasFilesToUpload
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasFilesToUpload = function () {
+  if (this.toUpload.length === 0 &#x26;&#x26; this.toDelete.length === 0) {
+    console.log(&#x22;No files to upload&#x22;.blue);
+    this.removeConnections();
+    return false;
+  }
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	Get the user&#x27;s confirmation before uploading the file
+*/
+
+
+Deploy.prototype.askBeforeUpload = function() {
+  var file, remoteFile, _i, _j, _len, _len1, _ref, _ref1,
+    _this = this;
+  if (!this.<span class="apidocCodeKeywordSpan">hasFilesToUpload</span>()) {
+    return;
+  }
+  if (this.toDelete.length) {
+    console.log(&#x22;Files that will be deleted:&#x22;.bold.red);
+    _ref = this.toDelete;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      file = _ref[_i];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.includeExtraFiles" id="apidoc.element.dploy.deploy.prototype.includeExtraFiles">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>includeExtraFiles
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">includeExtraFiles = function () {
+  var file, files, key, match, remoteFile, _i, _len;
+  if (this.ignoreInclude || this.catchup) {
+    return false;
+  }
+  for (key in this.config.include) {
+    files = expand({
+      filter: &#x22;isFile&#x22;,
+      cwd: process.cwd()
+    }, key);
+    match = path.dirname(key).match(/^[0-9a-zA-Z_\-/\\]+/);
+    for (_i = 0, _len = files.length; _i &#x3c; _len; _i++) {
+      file = files[_i];
+      remoteFile = match &#x26;&#x26; match.length ? file.substring(match[0].length) : file;
+      remoteFile = this.config.include[key] + remoteFile;
+      remoteFile = remoteFile.replace(/(\/\/)/g, &#x22;/&#x22;);
+      this.toUpload.push({
+        name: file,
+        remote: remoteFile
+      });
+    }
+  }
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var _this = this;
+if (!/([^\s])/.test(old_rev) || !/([^\s])/.test(new_rev)) {
+  return this.addAll();
+}
+console.log(&#x22;Checking diffs between&#x22;.bold.yellow, (&#x22;[&#x22; + old_rev + &#x22;]&#x22;).yellow, &#x22;&#x3e;&#x22;.
+yellow, (&#x22;[&#x22; + new_rev + &#x22;]&#x22;).yellow);
+if (old_rev === new_rev) {
+  if (this.config.include) {
+    this.<span class="apidocCodeKeywordSpan">includeExtraFiles</span>();
+    if (this.config.check) {
+      this.askBeforeUpload();
+    } else {
+      this.startUploads();
+    }
+    return;
+  } else {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.loadYAML" id="apidoc.element.dploy.deploy.prototype.loadYAML">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>loadYAML
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadYAML = function () {
+  var _this = this;
+  return fs.readFile(&#x22;dploy.yaml&#x22;, function(error, data) {
+    var code, key, yaml;
+    if (error) {
+      return console.log(&#x22;Error:&#x22;.bold.red, &#x22;The file \&#x22;dploy.yaml\&#x22; could not be found.&#x22;);
+      process.exit(code = 0);
+    }
+    yaml = YAML.parse(data.toString());
+    if (!_this.server) {
+      for (key in yaml) {
+        _this.server = key;
+        break;
+      }
+    }
+    _this.config = yaml[_this.server];
+    if (!_this.config) {
+      return console.log(&#x22;Error:&#x22;.bold.red, &#x22;We couldn&#x27;t find the settings for &#x22; + (&#x22;&#x22; + _this.server).bold.red);
+      process.exit(code = 0);
+    }
+    return _this.configLoaded();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.dirCreated = {};
+  this.isConnected = false;
+  prompt.message = &#x22;– &#x22;.red;
+  prompt.delimiter = &#x22;&#x22;;
+  if (this.config != null) {
+    this.configLoaded();
+  } else {
+    this.<span class="apidocCodeKeywordSpan">loadYAML</span>();
+  }
+}
+
+/*
+	Load the dploy.yaml, parse and find the current server
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.nextOnQueue" id="apidoc.element.dploy.deploy.prototype.nextOnQueue">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>nextOnQueue
+        <span class="apidocSignatureSpan">(connection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nextOnQueue = function (connection) {
+  var item, _i, _j, _k, _l, _len, _len1, _len2, _len3, _ref, _ref1, _ref2, _ref3;
+  if (this.toDelete.length) {
+    _ref = this.toDelete;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      item = _ref[_i];
+      if (!item.started) {
+        this.deleteItem(connection, item);
+        return;
+      }
+    }
+  }
+  if (this.toUpload.length) {
+    _ref1 = this.toUpload;
+    for (_j = 0, _len1 = _ref1.length; _j &#x3c; _len1; _j++) {
+      item = _ref1[_j];
+      if (!item.started) {
+        this.checkBeforeUpload(connection, item);
+        return;
+      }
+    }
+  }
+  _ref2 = this.toDelete;
+  for (_k = 0, _len2 = _ref2.length; _k &#x3c; _len2; _k++) {
+    item = _ref2[_k];
+    if (!item.completed) {
+      return;
+    }
+  }
+  _ref3 = this.toUpload;
+  for (_l = 0, _len3 = _ref3.length; _l &#x3c; _len3; _l++) {
+    item = _ref3[_l];
+    if (!item.completed) {
+      return;
+    }
+  }
+  return this.removeConnections();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var con, scheme,
+    _this = this;
+  scheme = require(&#x22;./scheme/&#x22; + this.config.scheme);
+  con = new scheme();
+  con.connected.add(function() {
+    _this.connections.push(con);
+    _this.numConnections++;
+    return _this.<span class="apidocCodeKeywordSpan">nextOnQueue</span>(con);
+  });
+  return con.connect(this.config);
+};
+
+/*
+	Check if the revision files exist, if not we will create one
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.removeConnections" id="apidoc.element.dploy.deploy.prototype.removeConnections">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>removeConnections
+        <span class="apidocSignatureSpan">(displayMessage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeConnections = function (displayMessage) {
+  var con, _i, _len, _ref, _results,
+    _this = this;
+  if (displayMessage == null) {
+    displayMessage = true;
+  }
+  if (this.numConnections &#x3e; 0) {
+    _ref = this.connections;
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      con = _ref[_i];
+      con.closed.add(function() {
+        _this.numConnections--;
+        if (_this.numConnections === 0) {
+          return _this.complete(displayMessage);
+        }
+      });
+      _results.push(con.close());
+    }
+    return _results;
+  } else {
+    return this.complete(displayMessage);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      branch = _ref[_i];
+      if (currentBranch === branch) {
+        return _this.setupGit();
+      }
+    }
+    console.log(&#x22;Error: &#x22;.red.bold + &#x22;You are not allowed to deploy from &#x22;.red + (&#x22;&#x22; + currentBranch
+).bold.underline.red + &#x22; to &#x22;.red + (&#x22;&#x22; + _this.server).bold.underline.red);
+    return _this.<span class="apidocCodeKeywordSpan">removeConnections</span>(false);
+  });
+};
+
+/*
+	Get the HEAD hash id so we can compare to the hash on the server
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.setFolderAsCreated" id="apidoc.element.dploy.deploy.prototype.setFolderAsCreated">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setFolderAsCreated
+        <span class="apidocSignatureSpan">(folder)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setFolderAsCreated = function (folder) {
+  var content, i;
+  i = folder.lastIndexOf(&#x22;/&#x22;);
+  if (this.dirCreated[folder]) {
+    return;
+  }
+  while (i &#x3e; 0) {
+    content = folder.slice(0, i);
+    this.dirCreated[content] = true;
+    i = content.lastIndexOf(&#x22;/&#x22;);
+  }
+  return this.dirCreated[folder] = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+return;
+        }
+        return connection.mkdir(this._normalize(this.config.path.remote + folder), function(error) {
+if (!_this.dirCreated[folder]) {
+  if (error) {
+
+  } else {
+    _this.<span class="apidocCodeKeywordSpan">setFolderAsCreated</span>(folder);
+  }
+}
+if (error) {
+  item.started = false;
+  return _this.nextOnQueue(connection);
+} else {
+  return _this.uploadItem(connection, item);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.setupFallbackConfig" id="apidoc.element.dploy.deploy.prototype.setupFallbackConfig">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupFallbackConfig
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setupFallbackConfig = function () {
+  var regExpPath, _base, _base1, _base10, _base2, _base3, _base4, _base5, _base6, _base7, _base8, _base9;
+  if (this.server == null) {
+    this.server = this.config.host;
+  }
+  if ((_base = this.config).scheme == null) {
+    _base.scheme = &#x22;ftp&#x22;;
+  }
+  if ((_base1 = this.config).port == null) {
+    _base1.port = (this.config.scheme === &#x22;ftp&#x22; ? 21 : 22);
+  }
+  if ((_base2 = this.config).secure == null) {
+    _base2.secure = false;
+  }
+  if ((_base3 = this.config).secureOptions == null) {
+    _base3.secureOptions = {};
+  }
+  if ((_base4 = this.config).slots == null) {
+    _base4.slots = 1;
+  }
+  if ((_base5 = this.config).revision == null) {
+    _base5.revision = &#x22;.rev&#x22;;
+  }
+  if ((_base6 = this.config).path == null) {
+    _base6.path = {};
+  }
+  if ((_base7 = this.config.path).local == null) {
+    _base7.local = &#x22;&#x22;;
+  }
+  if ((_base8 = this.config.path).remote == null) {
+    _base8.remote = &#x22;&#x22;;
+  }
+  if ((_base9 = this.config).exclude == null) {
+    _base9.exclude = [];
+  }
+  if ((_base10 = this.config).include == null) {
+    _base10.include = {};
+  }
+  regExpPath = new RegExp(&#x22;(.*[^/]$)&#x22;);
+  if (this.config.path.local === &#x22;/&#x22;) {
+    this.config.path.local = &#x22;&#x22;;
+  }
+  if (this.config.path.local !== &#x22;&#x22;) {
+    this.config.path.local = this.config.path.local.replace(regExpPath, &#x22;$1/&#x22;);
+  }
+  if (this.config.path.remote !== &#x22;&#x22;) {
+    this.config.path.remote = this.config.path.remote.replace(regExpPath, &#x22;$1/&#x22;);
+  }
+  this.revisionPath = this.config.path.local ? this.config.path.local + this.config.revision : this.config.revision;
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+/*
+	Method for when the config file is loaded
+*/
+
+
+Deploy.prototype.configLoaded = function() {
+  this.<span class="apidocCodeKeywordSpan">setupFallbackConfig</span>();
+  return this.checkPassword(this.checkBranch);
+};
+
+/*
+	Set the fallback configuration
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.setupGit" id="apidoc.element.dploy.deploy.prototype.setupGit">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupGit
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setupGit = function () {
+  var _this = this;
+  console.log(&#x22;Connecting to &#x22;.bold.yellow + (&#x22;&#x22; + this.server).bold.underline.yellow + &#x22;...&#x22;.bold.yellow);
+  return exec(&#x22;git log --pretty=format:%H -n 1&#x22;, function(error, stdout, stderr) {
+    if (error) {
+      return console.log(&#x22;An error occurred when retrieving the local hash.&#x22;.bold.red, error);
+    }
+    _this.local_hash = stdout;
+    return _this.setupServer();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	Check if the branch you are working on can be deployed to that server
+*/
+
+
+Deploy.prototype.checkBranch = function() {
+  var _this = this;
+  if (!this.config.branch) {
+    return this.<span class="apidocCodeKeywordSpan">setupGit</span>();
+  }
+  if (typeof this.config.branch === &#x22;string&#x22;) {
+    this.config.branch = [this.config.branch];
+  }
+  return exec(&#x22;git rev-parse --abbrev-ref HEAD&#x22;, function(error, stdout, stderr) {
+    var branch, currentBranch, _i, _len, _ref;
+    if (error) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.setupMultipleServers" id="apidoc.element.dploy.deploy.prototype.setupMultipleServers">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupMultipleServers
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setupMultipleServers = function () {
+  var con, scheme,
+    _this = this;
+  scheme = require(&#x22;./scheme/&#x22; + this.config.scheme);
+  con = new scheme();
+  con.connected.add(function() {
+    _this.connections.push(con);
+    _this.numConnections++;
+    return _this.nextOnQueue(con);
+  });
+  return con.connect(this.config);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var i;
+  if (!this.hasFilesToUpload()) {
+    return;
+  }
+  this.nextOnQueue(this.connection);
+  i = this.config.slots - 1;
+  while (i-- &#x3e; 0) {
+    this.<span class="apidocCodeKeywordSpan">setupMultipleServers</span>();
+  }
+};
+
+/*
+	Check if there&#x27;s file to upload/delete
+
+	@return &#x3c;boolean&#x3e; if there&#x27;s files or not
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.setupServer" id="apidoc.element.dploy.deploy.prototype.setupServer">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>setupServer
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setupServer = function () {
+  var scheme,
+    _this = this;
+  scheme = require(&#x22;./scheme/&#x22; + this.config.scheme);
+  this.connection = new scheme();
+  this.connection.failed.add(function() {
+    if (!_this.isConnected) {
+      return console.log(&#x22;Connection failed.&#x22;.bold.red);
+    }
+  });
+  this.connection.connected.add(function() {
+    _this.isConnected = true;
+    _this.numConnections++;
+    _this.connections.push(_this.connection);
+    return _this.checkRevision();
+  });
+  return this.connection.connect(this.config);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var _this = this;
+  console.log(&#x22;Connecting to &#x22;.bold.yellow + (&#x22;&#x22; + this.server).bold.underline.yellow + &#x22;...&#x22;.bold
+.yellow);
+  return exec(&#x22;git log --pretty=format:%H -n 1&#x22;, function(error, stdout, stderr) {
+    if (error) {
+      return console.log(&#x22;An error occurred when retrieving the local hash.&#x22;.bold.red, error);
+    }
+    _this.local_hash = stdout;
+    return _this.<span class="apidocCodeKeywordSpan">setupServer</span>();
+  });
+};
+
+/*
+	Connect to the server and once it&#x27;s done, check for the remote revision file
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.startUploads" id="apidoc.element.dploy.deploy.prototype.startUploads">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>startUploads
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">startUploads = function () {
+  var i;
+  if (!this.hasFilesToUpload()) {
+    return;
+  }
+  this.nextOnQueue(this.connection);
+  i = this.config.slots - 1;
+  while (i-- &#x3e; 0) {
+    this.setupMultipleServers();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+console.log(&#x22;Checking diffs between&#x22;.bold.yellow, (&#x22;[&#x22; + old_rev + &#x22;]&#x22;).yellow, &#x22;&#x3e;&#x22;.
+yellow, (&#x22;[&#x22; + new_rev + &#x22;]&#x22;).yellow);
+if (old_rev === new_rev) {
+  if (this.config.include) {
+    this.includeExtraFiles();
+    if (this.config.check) {
+      this.askBeforeUpload();
+    } else {
+      this.<span class="apidocCodeKeywordSpan">startUploads</span>();
+    }
+    return;
+  } else {
+    console.log(&#x22;No diffs between local and remote :)&#x22;.blue);
+    return this.removeConnections();
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.deploy.prototype.uploadItem" id="apidoc.element.dploy.deploy.prototype.uploadItem">
+        function <span class="apidocSignatureSpan">dploy.deploy.prototype.</span>uploadItem
+        <span class="apidocSignatureSpan">(connection, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uploadItem = function (connection, item) {
+  var remote_path,
+    _this = this;
+  remote_path = this._normalize(this.config.path.remote + item.remote);
+  return connection.upload(item.name, remote_path, function(error) {
+    if (error) {
+      console.log(&#x22;[ + ]&#x22;.blue, (&#x22;Fail uploading file &#x22; + item.name + &#x22;:&#x22;).red, error);
+      item.started = false;
+      item.completed = false;
+    } else {
+      console.log(&#x22;[ + ]&#x22;.blue + (&#x22; File uploaded: &#x22; + item.name + &#x22;:&#x22;).blue);
+      item.completed = true;
+    }
+    return _this.nextOnQueue(connection);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        _this = this;
+      item.started = true;
+      nameSplit = item.remote.split(&#x22;/&#x22;);
+      if (nameSplit.length &#x3e; 1) {
+        nameSplit.length = nameSplit.length - 1;
+        folder = nameSplit.join(&#x22;/&#x22;);
+        if (this.dirCreated[folder]) {
+          this.<span class="apidocCodeKeywordSpan">uploadItem</span>(connection, item);
+          return;
+        }
+        return connection.mkdir(this._normalize(this.config.path.remote + folder), function(error) {
+          if (!_this.dirCreated[folder]) {
+if (error) {
+
+} else {
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.ftp" id="apidoc.module.dploy.ftp">module dploy.ftp</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.ftp" id="apidoc.element.dploy.ftp.ftp">
+        function <span class="apidocSignatureSpan">dploy.</span>ftp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FTP() {
+  var _this = this;
+  this.connected = new Signal();
+  this.failed = new Signal();
+  this.closed = new Signal();
+  this.connection = new ftp();
+  this.connection.on(&#x22;error&#x22;, function() {
+    return _this.failed.dispatch();
+  });
+  this.connection.on(&#x22;ready&#x22;, function() {
+    return _this.connected.dispatch();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.ftp.prototype" id="apidoc.module.dploy.ftp.prototype">module dploy.ftp.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.close" id="apidoc.element.dploy.ftp.prototype.close">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>close
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function (callback) {
+  var _this = this;
+  this.connection.on(&#x22;end&#x22;, function() {
+    return _this.closed.dispatch();
+  });
+  return this.connection.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      con = _ref[_i];
+      con.closed.add(function() {
+        _this.numConnections--;
+        if (_this.numConnections === 0) {
+          return _this.complete(displayMessage);
+        }
+      });
+      _results.push(con.<span class="apidocCodeKeywordSpan">close</span>());
+    }
+    return _results;
+  } else {
+    return this.complete(displayMessage);
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.connect" id="apidoc.element.dploy.ftp.prototype.connect">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>connect
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">connect = function (config) {
+  return this.connection.connect({
+    host: config.host,
+    port: config.port,
+    user: config.user,
+    password: config.pass,
+    secure: config.secure,
+    secureOptions: config.secureOptions
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+  this.connection.connected.add(function() {
+    _this.isConnected = true;
+    _this.numConnections++;
+    _this.connections.push(_this.connection);
+    return _this.checkRevision();
+  });
+  return this.connection.<span class="apidocCodeKeywordSpan">connect</span>(this.config);
+};
+
+/*
+	Create more connections of your server for multiple uploads
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.delete" id="apidoc.element.dploy.ftp.prototype.delete">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>delete
+        <span class="apidocSignatureSpan">(remote_path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (remote_path, callback) {
+  return this.connection[&#x22;delete&#x22;](remote_path, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.dispose" id="apidoc.element.dploy.ftp.prototype.dispose">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispose = function () {
+  if (this.connected) {
+    this.connected.dispose();
+    this.connected = null;
+  }
+  if (this.failed) {
+    this.failed.dispose();
+    this.failed = null;
+  }
+  if (this.closed) {
+    this.closed.dispose();
+    return this.closed = null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Deploy.prototype.dispose = function() {
+  var con, _i, _len, _ref;
+  if (this.completed) {
+    _ref = this.connections;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      con = _ref[_i];
+      con.<span class="apidocCodeKeywordSpan">dispose</span>();
+    }
+    this.completed.dispose();
+    return this.completed = null;
+  }
+};
+
+/*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.get" id="apidoc.element.dploy.ftp.prototype.get">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>get
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (path, callback) {
+  return this.connection.get(path, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this.config.privateKey = fs.readFileSync(this._resolveHomeFolder(this.config.privateKey));
+  }
+  if (this.config.publicKey) {
+    this.config.publicKey = fs.readFileSync(this._resolveHomeFolder(this.config.publicKey));
+  }
+  return callback.call(this);
+}
+prompt.<span class="apidocCodeKeywordSpan">get</span>([
+  {
+    name: &#x22;password&#x22;,
+    description: &#x22;Enter the password for &#x22;.red + (&#x22;&#x22; + this.config.host + &#x22;:&#x22;).underline.bold.red,
+    required: true,
+    hidden: true
+  }
+], function(error, result) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.mkdir" id="apidoc.element.dploy.ftp.prototype.mkdir">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>mkdir
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdir = function (path, callback) {
+  return this.connection.mkdir(path, true, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      if (nameSplit.length &#x3e; 1) {
+        nameSplit.length = nameSplit.length - 1;
+        folder = nameSplit.join(&#x22;/&#x22;);
+        if (this.dirCreated[folder]) {
+this.uploadItem(connection, item);
+return;
+        }
+        return connection.<span class="apidocCodeKeywordSpan">mkdir</span>(this._normalize(this.config.path.remote + folder), function
+(error) {
+if (!_this.dirCreated[folder]) {
+  if (error) {
+
+  } else {
+    _this.setFolderAsCreated(folder);
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.ftp.prototype.upload" id="apidoc.element.dploy.ftp.prototype.upload">
+        function <span class="apidocSignatureSpan">dploy.ftp.prototype.</span>upload
+        <span class="apidocSignatureSpan">(local_path, remote_path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">upload = function (local_path, remote_path, callback) {
+  return this.connection.put(local_path, remote_path, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*/
+
+
+Deploy.prototype.uploadItem = function(connection, item) {
+  var remote_path,
+    _this = this;
+  remote_path = this._normalize(this.config.path.remote + item.remote);
+  return connection.<span class="apidocCodeKeywordSpan">upload</span>(item.name, remote_path, function(error) {
+    if (error) {
+      console.log(&#x22;[ + ]&#x22;.blue, (&#x22;Fail uploading file &#x22; + item.name + &#x22;:&#x22;).red, error);
+      item.started = false;
+      item.completed = false;
+    } else {
+      console.log(&#x22;[ + ]&#x22;.blue + (&#x22; File uploaded: &#x22; + item.name + &#x22;:&#x22;).blue);
+      item.completed = true;
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.generator" id="apidoc.module.dploy.generator">module dploy.generator</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.generator.generator" id="apidoc.element.dploy.generator.generator">
+        function <span class="apidocSignatureSpan">dploy.</span>generator
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Generator() {
+  this._generatePostCommit = __bind(this._generatePostCommit, this);
+  this._generateConfig = __bind(this._generateConfig, this);
+  this._dployCompleted = new Signal();
+  this._dployCompleted.add(this._generatePostCommit);
+  this._postCommitCompleted = new Signal();
+  this._postCommitCompleted.add(this._completed);
+  console.log(&#x22;Installing &#x22;.yellow + &#x22;DPLOY&#x22;.bold.yellow + &#x22;...&#x22;.yellow);
+  this._generateConfig();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.generator.prototype" id="apidoc.module.dploy.generator.prototype">module dploy.generator.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.generator.prototype._completed" id="apidoc.element.dploy.generator.prototype._completed">
+        function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_completed
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_completed = function () {
+  var code;
+  console.log(&#x22;Done!&#x22;.bold.green + &#x22; Your project is ready to &#x22;.green + &#x22;DEPLOY&#x22;.green.bold + &#x22; :) &#x22;.green);
+  return process.exit(code = 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.generator.prototype._generateConfig" id="apidoc.element.dploy.generator.prototype._generateConfig">
+        function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_generateConfig
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_generateConfig = function () {
+  var fileName;
+  fileName = &#x22;dploy.yaml&#x22;;
+  if (!fs.existsSync(fileName)) {
+    fs.createReadStream(path.resolve(__dirname, &#x22;../generator/dploy.yaml&#x22;)).pipe(fs.createWriteStream(fileName));
+  }
+  return this._dployCompleted.dispatch();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this._generatePostCommit = __bind(this._generatePostCommit, this);
+  this._generateConfig = __bind(this._generateConfig, this);
+  this._dployCompleted = new Signal();
+  this._dployCompleted.add(this._generatePostCommit);
+  this._postCommitCompleted = new Signal();
+  this._postCommitCompleted.add(this._completed);
+  console.log(&#x22;Installing &#x22;.yellow + &#x22;DPLOY&#x22;.bold.yellow + &#x22;...&#x22;.yellow);
+  this.<span class="apidocCodeKeywordSpan">_generateConfig</span>();
+}
+
+Generator.prototype._generateConfig = function() {
+  var fileName;
+  fileName = &#x22;dploy.yaml&#x22;;
+  if (!fs.existsSync(fileName)) {
+    fs.createReadStream(path.resolve(__dirname, &#x22;../generator/dploy.yaml&#x22;)).pipe(fs.createWriteStream(fileName));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.generator.prototype._generatePostCommit" id="apidoc.element.dploy.generator.prototype._generatePostCommit">
+        function <span class="apidocSignatureSpan">dploy.generator.prototype.</span>_generatePostCommit
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_generatePostCommit = function () {
+  var content, fileData, fileName,
+    _this = this;
+  if (!fs.existsSync(&#x22;.git&#x22;)) {
+    return this._postCommitCompleted.dispatch();
+  }
+  fileName = &#x22;.git/hooks/post-commit&#x22;;
+  content = fs.readFileSync(path.resolve(__dirname, &#x22;../generator/post-commit&#x22;)).toString();
+  if (fs.existsSync(fileName)) {
+    fileData = fs.readFileSync(fileName).toString();
+    if (fileData.toLowerCase().indexOf(&#x22;dploy&#x22;) &#x3e;= 0) {
+      return this._postCommitCompleted.dispatch();
+    }
+    if (fileData.indexOf(&#x22;#!/bin/bash&#x22;) &#x3e;= 0) {
+      content = content.replace(new RegExp(&#x22;#!\/bin\/bash&#x22;, &#x22;g&#x22;), &#x22;&#x22;);
+    }
+  }
+  return fs.appendFile(fileName, content, function(error) {
+    if (error) {
+      console.log(&#x22;Error:&#x22;.bold.red, &#x22;The post-commit file could not be created. Check the permissions of the folder.&#x22;.red);
+      console.log(&#x22;\t &#x22; + error);
+      return _this._postCommitCompleted.dispatch();
+    }
+    fs.chmodSync(fileName, &#x22;0755&#x22;);
+    return _this._postCommitCompleted.dispatch();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.sftp" id="apidoc.module.dploy.sftp">module dploy.sftp</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.sftp" id="apidoc.element.dploy.sftp.sftp">
+        function <span class="apidocSignatureSpan">dploy.</span>sftp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SFTP() {
+  var _this = this;
+  this.connected = new Signal();
+  this.failed = new Signal();
+  this.closed = new Signal();
+  this.closing = false;
+  this.sftp = new ssh2();
+  this.sftp.on(&#x22;error&#x22;, function() {
+    if (!_this.closing) {
+      return _this.failed.dispatch();
+    }
+  });
+  this.sftp.on(&#x22;close&#x22;, function(hadError) {
+    if (_this.hadError) {
+      if (!_this.closing) {
+        return _this.failed.dispatch();
+      }
+    }
+  });
+  this.sftp.on(&#x22;ready&#x22;, function() {
+    return _this.sftp.sftp(function(error, connection) {
+      if (error) {
+        return _this.failed.dispatch();
+      }
+      _this.connection = connection;
+      return _this.connected.dispatch();
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (_this.hadError) {
+    if (!_this.closing) {
+      return _this.failed.dispatch();
+    }
+  }
+});
+this.sftp.on(&#x22;ready&#x22;, function() {
+  return _this.sftp.<span class="apidocCodeKeywordSpan">sftp</span>(function(error, connection) {
+    if (error) {
+      return _this.failed.dispatch();
+    }
+    _this.connection = connection;
+    return _this.connected.dispatch();
+  });
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.dploy.sftp.prototype" id="apidoc.module.dploy.sftp.prototype">module dploy.sftp.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype._rdelete" id="apidoc.element.dploy.sftp.prototype._rdelete">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>_rdelete
+        <span class="apidocSignatureSpan">(paths, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_rdelete = function (paths, callback) {
+  var path,
+    _this = this;
+  path = paths.shift();
+  return this.connection.opendir(path, function(error, handle) {
+    if (error) {
+      return callback.apply(_this, [error]);
+    }
+    return _this.connection.readdir(handle, function(error, list) {
+      if (error || paths.length === 0) {
+        return callback.apply(_this, [error]);
+      }
+      if (list.length &#x3c;= 2) {
+        return _this.connection.rmdir(path, function(error) {
+          if (error || paths.length === 0) {
+            return callback.apply(_this, [error]);
+          }
+          return _this._rdelete(paths, callback);
+        });
+      } else {
+        return callback.apply(_this, [error]);
+      }
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    paths.push(content);
+    i = content.lastIndexOf(&#x22;/&#x22;);
+  }
+  return this.connection.unlink(remote_path, function(error) {
+    if (error) {
+      return callback.apply(_this, [error]);
+    }
+    return _this.<span class="apidocCodeKeywordSpan">_rdelete</span>(paths, callback);
+  });
+};
+
+/*
+	@private
+	Delete directories recursively
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype._rmkdir" id="apidoc.element.dploy.sftp.prototype._rmkdir">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>_rmkdir
+        <span class="apidocSignatureSpan">(paths, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_rmkdir = function (paths, callback) {
+  var path,
+    _this = this;
+  path = paths.pop();
+  return this.connection.opendir(path, function(error, handle) {
+    if (error) {
+      return _this.connection.mkdir(path, function(error) {
+        if (error || paths.length === 0) {
+          return callback.apply(_this, [error]);
+        }
+        return _this._rmkdir(paths, callback);
+      });
+    } else {
+      if (paths.length === 0) {
+        return callback.apply(_this, [void 0]);
+      }
+      return _this._rmkdir(paths, callback);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  i = path.length;
+  paths = [];
+  while (i &#x3e; 0) {
+    content = path.slice(0, i);
+    paths.push(content);
+    i = content.lastIndexOf(&#x22;/&#x22;);
+  }
+  return this.<span class="apidocCodeKeywordSpan">_rmkdir</span>(paths, callback);
+};
+
+/*
+	@private
+	Create directories recursively
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.close" id="apidoc.element.dploy.sftp.prototype.close">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>close
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function (callback) {
+  var _this = this;
+  if (this.closing) {
+    return;
+  }
+  this.closing = true;
+  this.sftp.on(&#x22;end&#x22;, function() {
+    return _this.closed.dispatch();
+  });
+  return this.sftp.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      con = _ref[_i];
+      con.closed.add(function() {
+        _this.numConnections--;
+        if (_this.numConnections === 0) {
+          return _this.complete(displayMessage);
+        }
+      });
+      _results.push(con.<span class="apidocCodeKeywordSpan">close</span>());
+    }
+    return _results;
+  } else {
+    return this.complete(displayMessage);
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.connect" id="apidoc.element.dploy.sftp.prototype.connect">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>connect
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">connect = function (config) {
+  return this.sftp.connect({
+    host: config.host,
+    port: config.port,
+    username: config.user,
+    password: config.pass,
+    privateKey: config.privateKey,
+    publicKey: config.publicKey,
+    passphrase: config.passphrase
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+  this.connection.connected.add(function() {
+    _this.isConnected = true;
+    _this.numConnections++;
+    _this.connections.push(_this.connection);
+    return _this.checkRevision();
+  });
+  return this.connection.<span class="apidocCodeKeywordSpan">connect</span>(this.config);
+};
+
+/*
+	Create more connections of your server for multiple uploads
+*/
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.delete" id="apidoc.element.dploy.sftp.prototype.delete">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>delete
+        <span class="apidocSignatureSpan">(remote_path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (remote_path, callback) {
+  var content, i, paths,
+    _this = this;
+  i = remote_path.lastIndexOf(&#x22;/&#x22;);
+  paths = [];
+  while (i &#x3e; 0) {
+    content = remote_path.slice(0, i);
+    paths.push(content);
+    i = content.lastIndexOf(&#x22;/&#x22;);
+  }
+  return this.connection.unlink(remote_path, function(error) {
+    if (error) {
+      return callback.apply(_this, [error]);
+    }
+    return _this._rdelete(paths, callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.dispose" id="apidoc.element.dploy.sftp.prototype.dispose">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>dispose
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">dispose = function () {
+  if (this.connected) {
+    this.connected.dispose();
+    this.connected = null;
+  }
+  if (this.failed) {
+    this.failed.dispose();
+    this.failed = null;
+  }
+  if (this.closed) {
+    this.closed.dispose();
+    return this.closed = null;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Deploy.prototype.dispose = function() {
+  var con, _i, _len, _ref;
+  if (this.completed) {
+    _ref = this.connections;
+    for (_i = 0, _len = _ref.length; _i &#x3c; _len; _i++) {
+      con = _ref[_i];
+      con.<span class="apidocCodeKeywordSpan">dispose</span>();
+    }
+    this.completed.dispose();
+    return this.completed = null;
+  }
+};
+
+/*
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.get" id="apidoc.element.dploy.sftp.prototype.get">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>get
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (path, callback) {
+  return this.connection.readFile(path, &#x22;utf-8&#x22;, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    this.config.privateKey = fs.readFileSync(this._resolveHomeFolder(this.config.privateKey));
+  }
+  if (this.config.publicKey) {
+    this.config.publicKey = fs.readFileSync(this._resolveHomeFolder(this.config.publicKey));
+  }
+  return callback.call(this);
+}
+prompt.<span class="apidocCodeKeywordSpan">get</span>([
+  {
+    name: &#x22;password&#x22;,
+    description: &#x22;Enter the password for &#x22;.red + (&#x22;&#x22; + this.config.host + &#x22;:&#x22;).underline.bold.red,
+    required: true,
+    hidden: true
+  }
+], function(error, result) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.mkdir" id="apidoc.element.dploy.sftp.prototype.mkdir">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>mkdir
+        <span class="apidocSignatureSpan">(path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mkdir = function (path, callback) {
+  var content, i, paths;
+  i = path.length;
+  paths = [];
+  while (i &#x3e; 0) {
+    content = path.slice(0, i);
+    paths.push(content);
+    i = content.lastIndexOf(&#x22;/&#x22;);
+  }
+  return this._rmkdir(paths, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      if (nameSplit.length &#x3e; 1) {
+        nameSplit.length = nameSplit.length - 1;
+        folder = nameSplit.join(&#x22;/&#x22;);
+        if (this.dirCreated[folder]) {
+this.uploadItem(connection, item);
+return;
+        }
+        return connection.<span class="apidocCodeKeywordSpan">mkdir</span>(this._normalize(this.config.path.remote + folder), function
+(error) {
+if (!_this.dirCreated[folder]) {
+  if (error) {
+
+  } else {
+    _this.setFolderAsCreated(folder);
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.dploy.sftp.prototype.upload" id="apidoc.element.dploy.sftp.prototype.upload">
+        function <span class="apidocSignatureSpan">dploy.sftp.prototype.</span>upload
+        <span class="apidocSignatureSpan">(local_path, remote_path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">upload = function (local_path, remote_path, callback) {
+  return this.connection.fastPut(local_path, remote_path, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+*/
+
+
+Deploy.prototype.uploadItem = function(connection, item) {
+  var remote_path,
+    _this = this;
+  remote_path = this._normalize(this.config.path.remote + item.remote);
+  return connection.<span class="apidocCodeKeywordSpan">upload</span>(item.name, remote_path, function(error) {
+    if (error) {
+      console.log(&#x22;[ + ]&#x22;.blue, (&#x22;Fail uploading file &#x22; + item.name + &#x22;:&#x22;).red, error);
+      item.started = false;
+      item.completed = false;
+    } else {
+      console.log(&#x22;[ + ]&#x22;.blue + (&#x22; File uploaded: &#x22; + item.name + &#x22;:&#x22;).blue);
+      item.completed = true;
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
